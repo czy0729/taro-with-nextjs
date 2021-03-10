@@ -1,0 +1,42 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-02-14 22:09:52
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-01 13:55:52
+ */
+@import '../../index';
+
+.homeHeader {
+  position: fixed !important;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 12px;
+  background: $color-plain;
+  @include thinBorder();
+}
+.placeholder {
+  height: $header;
+}
+.item {
+  position: relative;
+  padding: 0 24px;
+  height: $header;
+  color: $color-desc;
+
+  &Active {
+    color: #000;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      width: 48px;
+      height: 6px;
+      background: #000;
+      border-radius: 3px;
+    }
+  }
+}

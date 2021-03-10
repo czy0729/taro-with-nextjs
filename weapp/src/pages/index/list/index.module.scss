@@ -1,0 +1,14 @@
+/*
+ * @Author: czy0729
+ * @Date: 2021-02-26 10:26:08
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-10 17:28:15
+ */
+@import '../../../styles/theme';
+
+.list {
+  height: calc(100vh - #{$header} - #{$tab-bar});
+  height: calc(100vh - #{$header} - #{$tab-bar} - constant(safe-area-inset-bottom));
+  height: calc(100vh - #{$header} - #{$tab-bar} - env(safe-area-inset-bottom));
+  background-color: $color-bg;
+}

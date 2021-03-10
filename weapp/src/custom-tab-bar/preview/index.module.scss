@@ -1,0 +1,106 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-07-01 16:59:01
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-10 14:41:25
+ */
+@import '../../styles/import';
+
+.flex {
+  display: flex;
+  align-items: center;
+
+  &Center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.preview {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  transition: visibility 300ms cubic-bezier(0.36, 0.66, 0.04, 1);
+
+  &Show {
+    visibility: visible;
+  }
+  &Show .container {
+    opacity: 1;
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+  background-image: url('../../assets/preview/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.top {
+  position: relative;
+  z-index: 2;
+  margin-top: 200px;
+
+  &Img {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.publish {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0 $wind 164px;
+
+  &Item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    padding: 32px 0;
+  }
+  &Btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 56px;
+
+    &:active {
+      opacity: 0.64;
+    }
+    &Wrap {
+      width: 88px;
+      height: 88px;
+      @include thinBorder((top, right, bottom, left), $color-sub, 44px);
+    }
+    &Icon {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../assets/preview/close.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &Text {
+    margin-top: 16px;
+    color: $color-title;
+    font-size: 26px;
+    line-height: 48px;
+  }
+}

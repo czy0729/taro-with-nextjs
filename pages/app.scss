@@ -1,0 +1,40 @@
+/*
+ * @Author: czy0729 
+ * @Date: 2021-02-24 20:57:37 
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-02-25 20:12:08
+ */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@import '../weapp/src/styles/reset.scss';
+@import '../weapp/src/styles/utils.scss';
+
+$tab-bar: 98px;
+
+a {
+  display: block;
+
+  &,
+  &:hover,
+  &:active,
+  &:visited,
+  &:link,
+  &:focus {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+#parse-rich-text,
+.rich-body {
+  & > * {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+}

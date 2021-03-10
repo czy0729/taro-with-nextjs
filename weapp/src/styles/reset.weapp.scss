@@ -1,0 +1,44 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-06-17 15:36:49
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2020-06-17 15:37:52
+ */
+@import './theme';
+
+page {
+  width: 100%;
+  font-family: 'Microsoft Yahei', Avenir, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  -webkit-text-size-adjust: none;
+  background: $color-bg;
+}
+view,
+text,
+scroll-view {
+  box-sizing: border-box;
+}
+view {
+  @include eject(line-height, 0);
+}
+button {
+  @include eject(margin-left, 0);
+  @include eject(margin-right, 0);
+  overflow: initial;
+
+  &:after {
+    display: none;
+  }
+}
+trees text {
+  display: block;
+  width: initial !important;
+  height: initial !important;
+  padding: 0 28rpx;
+  margin-bottom: 32rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #4a4a4a;
+}

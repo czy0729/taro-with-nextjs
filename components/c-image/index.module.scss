@@ -1,0 +1,63 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-02-18 16:09:31
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-02-25 16:55:02
+ */
+@import '../index';
+
+.figure {
+  position: relative;
+  overflow: hidden;
+  text-align: inherit;
+  overflow: hidden;
+
+  &Bg .image {
+    background-color: $color-bg-inner;
+  }
+  &Radius {
+    &Sm {
+      border-radius: $radius-sm;
+
+      & .image {
+        border-radius: $radius-sm;
+      }
+    }
+    &Xs {
+      border-radius: $radius-xs;
+
+      & .image {
+        border-radius: $radius-xs;
+      }
+    }
+  }
+}
+
+.image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 24px;
+  overflow: hidden;
+  vertical-align: top;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-bg-inner;
+  }
+  &Round {
+    border-radius: 50%;
+  }
+  &AspectFill {
+    object-fit: cover;
+  }
+  &AspectFit {
+    object-fit: contain;
+  }
+}

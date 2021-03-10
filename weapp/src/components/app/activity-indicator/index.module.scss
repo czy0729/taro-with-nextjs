@@ -1,0 +1,39 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-10-26 15:35:08
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-02-26 17:10:46
+ */
+@import '../../index';
+
+.empty {
+  width: 100%;
+  height: 80vh;
+  padding-bottom: 200px;
+  pointer-events: none;
+}
+.activityIndicator {
+  min-height: $tab-bar;
+}
+.end {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 84px;
+    height: $one-px;
+    background: $color-extra;
+    transform: scaleY(0.33333);
+  }
+  &:before {
+    left: 50%;
+    margin-left: -160px;
+  }
+  &:after {
+    right: 50%;
+    margin-right: -160px;
+  }
+}

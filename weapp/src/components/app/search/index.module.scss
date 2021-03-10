@@ -1,0 +1,20 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-07-18 15:23:16
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-02-25 16:01:33
+ */
+@import '../../index';
+
+$search: 64px;
+
+.search {
+  position: fixed;
+  z-index: 11;
+  top: ($header - $search) / 2;
+  right: $wind;
+  width: 140px;
+  height: $search;
+  background-color: $color-bg-inner;
+  border-radius: 34px;
+}

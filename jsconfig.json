@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@@/*": ["./*"],
+      "@/*": ["weapp/src/*"],
+      "@tarojs/taro": ["components/@tarojs/taro"],
+      "@tarojs/components": ["components/@tarojs/components"],
+      "@tarojs/mobx": ["components/@tarojs/mobx"],
+      "@/components/c-image": ["components/c-image"],
+      "@/components/link": ["components/link"],
+      "@/constants/images": ["public/images.js"]
+    }
+  }
+}

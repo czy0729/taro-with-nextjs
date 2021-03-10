@@ -1,0 +1,74 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-10 12:09:04
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2020-04-23 15:46:22
+ */
+@import './not-format';
+
+$one-px: $--one-px;
+$two-px: $--two-px;
+
+// 统一布局单位
+$space: 56px; // 上下
+$wind: 32px; // 两翼
+$bottom: 80px; // 底部
+$xs: 8px;
+$sm: 16px;
+$md: 32px;
+$lg: 64px;
+$distance: 60px; // 块与块之间的距离
+
+$status-bar: 40px;
+$header: 96px;
+$tab-bar: 98px;
+$fixed-bar: 98px;
+$top: 56px; // 自定义头距离顶部高度
+$top--h5: 24px;
+$app-fixed-bottom: 104px;
+
+// 主题色
+$color-main: #a89666; // rgb(255, 195, 0);
+$color-plain: rgb(255, 255, 255);
+$color-bg: rgba(249, 249, 249, 1);
+$color-bg-inner: rgba(243, 243, 243, 1);
+$color-primary: #3b6cff;
+$color-primary-light: rgb(248, 253, 255);
+$color-success: rgb(50, 200, 64);
+$color-warning: rgb(255, 106, 78);
+$color-danger: #ff3c00; // rgb(255, 60, 0);
+$color-danger--eltmall: #f30213;
+$color-yellow: #f7b500;
+$color-wait: rgb(200, 200, 200);
+$color-disabled: rgb(150, 150, 150);
+$color-link: #569cc3;
+$color-border: #ededed;
+$color-placeholder: rgb(250, 250, 250);
+$color-active: rgba(0, 0, 0, 0.08);
+
+// 文字颜色
+$font-family: PingFang sc, Verdana, Helvetica Neue, Microsoft Yahei,
+  Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+$color-title: #282828;
+$color-desc: #4a4a4a;
+$color-sub: #999;
+$color-extra: #b2b2b2;
+$color-default: #adadad;
+$color-icon: #ccc;
+$color-black: #000;
+
+// 圆角
+$radius-xs: 6px;
+$radius-sm: 12px;
+
+// 层叠
+$z-index-fixed: 50;
+$z-index-mask: 99;
+$z-tab-bar: 999;
+$z-index-tab-bar: $z-tab-bar + 1;
+$z-index-app-filter: $z-tab-bar + 10;
+$z-index-action-sheet: $z-tab-bar + 100;
+
+// 其他
+$box-shadow-img: 0px 2px 16px rgba(0, 0, 0, 0.12);
+$cb: cubic-bezier(0.36, 0.66, 0.04, 1);

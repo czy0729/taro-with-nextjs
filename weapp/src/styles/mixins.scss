@@ -1,0 +1,291 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-10 12:08:52
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-01 14:05:30
+ */
+@import './theme';
+
+@mixin hitSlop($px: 20px) {
+  &:before {
+    content: '';
+    position: absolute;
+    top: -$px;
+    bottom: -$px;
+    left: -$px;
+    right: -$px;
+  }
+}
+
+@mixin safeBottom($type, $px: $tab-bar) {
+  #{$type}: #{$px};
+  #{$type}: calc(#{$px} + constant(safe-area-inset-bottom));
+  #{$type}: calc(#{$px} + env(safe-area-inset-bottom));
+}
+
+@mixin fixedTop() {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  width: 750px;
+  margin-left: -375px;
+}
+
+/**
+  * H5真1PX
+  */
+@mixin thinBorder(
+  $directionMaps: bottom,
+  $color: $color-border,
+  $radius: (
+    0,
+    0,
+    0,
+    0
+  ),
+  $borderWidth: $one-px,
+  $position: after
+) {
+  // 是否只有一个方向
+  $isOnlyOneDir: string==type-of($directionMaps);
+
+  @if ($isOnlyOneDir) {
+    $directionMaps: ($directionMaps);
+  }
+
+  @each $directionMap in $directionMaps {
+    border-#{$directionMap}: $borderWidth solid $color;
+  }
+
+  // 判断圆角是list还是number
+  @if (list==type-of($radius)) {
+    border-radius: nth($radius, 1)
+      nth($radius, 2)
+      nth($radius, 3)
+      nth($radius, 4);
+  } @else {
+    border-radius: $radius;
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    & {
+      position: relative;
+
+      // 删除1像素密度比下的边框
+      @each $directionMap in $directionMaps {
+        border-#{$directionMap}: none;
+      }
+    }
+
+    &:#{$position} {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      box-sizing: border-box;
+      padding: $borderWidth;
+      transform-origin: 0 0;
+      pointer-events: none;
+      border: 0 solid $color;
+
+      @each $directionMap in $directionMaps {
+        border-#{$directionMap}-width: $borderWidth;
+      }
+
+      // 判断圆角是list还是number
+      @if (list==type-of($radius)) {
+        border-radius: nth($radius, 1) *
+          2
+          nth($radius, 2) *
+          2
+          nth($radius, 3) *
+          2
+          nth($radius, 4) *
+          2;
+      } @else {
+        border-radius: $radius * 2;
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:#{$position} {
+      // 判断圆角是list还是number
+      @if (list==type-of($radius)) {
+        border-radius: nth($radius, 1) *
+          3
+          nth($radius, 2) *
+          3
+          nth($radius, 3) *
+          3
+          nth($radius, 4) *
+          3;
+      } @else {
+        border-radius: $radius * 3;
+      }
+
+      width: 300%;
+      height: 300%;
+      transform: scale(0.33333);
+    }
+  }
+}
+
+@mixin thinBorderAndroid($position: after) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:#{$position} {
+      z-index: 1;
+      transform: scale(0.5) translateZ($one-px);
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:#{$position} {
+      transform: scale(0.33333) translateZ($one-px);
+    }
+  }
+}
+
+/**
+  * NOTE RN 无法通过 text-overflow 实现省略号，这些代码不能打包到 RN 中
+  */
+@mixin text-ellipsis() {
+  /*postcss-pxtransform rn eject enable*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+/**
+  * NOTE 实现多行文本省略，RN 用 Text 标签的 numberOfLines，H5/小程序用 -webkit-line-clamp
+  */
+@mixin lamp-clamp($line) {
+  /*postcss-pxtransform rn eject enable*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  word-break: break-all;
+  -webkit-line-clamp: $line;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+/**
+  * 字体
+  */
+@mixin font-size($px) {
+  font-family: $font-family;
+  display: block;
+  font-size: $px !important;
+  //  font-weight: 400;
+  line-height: $px;
+}
+
+/**
+  * 活动状态
+  */
+@mixin active() {
+  transition: background-color 0.16s;
+
+  &:active {
+    background-color: $color-active;
+  }
+}
+
+/* ========== 下方mixins请勿使用, 待旧代码替换完毕会移除 ========== */
+/**
+  * [待废弃] 1PX的border
+  */
+@mixin hairline(
+  $color: $color-border,
+  $border-radius: 0,
+  $border-width: $one-px
+) {
+  & {
+    position: relative;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    border: $border-width solid $color;
+    border-radius: $border-radius;
+    transform: scale(0.5);
+    transform-origin: left top;
+    pointer-events: none;
+  }
+}
+
+/**
+  * [待废弃] 1PX的border-top
+  */
+@mixin hairline-top($color: $color-border) {
+  & {
+    position: relative;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $one-px;
+    background-color: $color;
+    transform: scale(1, 0.5);
+    transform-origin: center top;
+  }
+}
+
+/**
+  * [待废弃] 1PX的border-bottom
+  */
+@mixin hairline-bottom($color: $color-border) {
+  & {
+    position: relative;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $one-px;
+    background-color: $color;
+    transform: scale(1, 0.5);
+    transform-origin: center bottom;
+  }
+}
+
+/**
+  * [待废弃]
+  * // NOTE Taro 编译成 RN 时对 border 的处理有问题
+  * RN 不支持针对某一边设置 style，即 border-bottom-style 会报错
+  * 那么 border-bottom: 1PX 就需要写成如下形式：
+  * border: 0 style color; border-bottom-width: 1PX;
+  */
+@mixin border($dir, $width: $one-px, $style: solid, $color: $color-border) {
+  border: 0 $style $color;
+  @each $d in $dir {
+    #{border-#{$d}-width}: $width;
+  }
+}
+
+/**
+  * [待废弃] 本项目不涉及到RN, 不应使用
+  * 对于不能打包到 RN 的样式，可以用 mixins 引入，相对美观一些
+  */
+@mixin eject($attr, $value) {
+  /*postcss-pxtransform rn eject enable*/
+  #{$attr}: $value;
+  /*postcss-pxtransform rn eject disable*/
+}

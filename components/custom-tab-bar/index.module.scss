@@ -1,0 +1,45 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-13 14:46:00
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-02-25 17:55:38
+ */
+@import '../index';
+
+.tabBar {
+  position: fixed;
+  z-index: $z-tab-bar;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &Wrap {
+    width: 100%;
+    @include safeBottom(height);
+    margin-bottom: -1px;
+    background-color: $color-plain;
+    @include thinBorder(top);
+  }
+}
+.item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  @include safeBottom(height);
+  padding-top: 12px;
+}
+.thumb {
+  width: 38px;
+  height: 38px;
+}
+.publish {
+  width: 68px;
+  height: 68px;
+}
+.text {
+  color: #b2b2b2;
+
+  &Active {
+    color: #1b1b1b;
+  }
+}

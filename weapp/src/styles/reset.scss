@@ -1,0 +1,87 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-10 12:09:01
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-01 14:05:20
+ */
+@import './theme';
+@import './mixins';
+
+/*postcss-pxtransform rn eject enable*/
+/* h5 */
+body {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1024px;
+  font-family: $font-family;
+  background: $color-bg;
+  overflow: hidden;
+  -webkit-text-size-adjust: none;
+}
+div {
+  box-sizing: border-box;
+}
+button {
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+input,
+textarea {
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+pre {
+  font-family: $font-family;
+}
+::-webkit-input-placeholder {
+  color: $color-sub;
+}
+#app {
+  line-height: 1;
+  overflow: hidden;
+}
+.wx-image-viewer {
+  z-index: 99999 !important;
+}
+.weui-tabbar {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0px 6px 46px 0px rgba(0, 0, 0, 0.12);
+
+  &:before {
+    content: initial !important;
+  }
+  &__item {
+    padding: 2px 0 4px !important;
+  }
+}
+.taro-tabbar {
+  &__container {
+    overflow: auto;
+  }
+  &__tabbar {
+    display: none;
+  }
+}
+.taro-text {
+  display: block;
+  word-break: break-all;
+}
+div[android] {
+  @include thinBorderAndroid();
+}
+/*postcss-pxtransform rn eject disable*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+::-webkit-input-placeholder {
+  color: $color-default;
+}
+.wx-swiper-dots {
+  transform: scale(0.6);
+}
