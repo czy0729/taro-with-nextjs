@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 需求
 
-## Getting Started
+当你接到多端小程序+H5, 还要支持小程序分享到朋友圈 和 SPA SEO 的需求的时候
 
-First, run the development server:
+百度了一大堆, 没有现成可行可靠方案, 可能大部分人会直接怼经理或者跑路 🏃?
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+而我很熟悉 Taro 和 Next.js, 灵机一动突然就想到了这么一个可能实现的方案
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+并且实现后小程序段性能良好, H5 端性能极好
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 思路
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+大体思路就是, 用 Taro (多端框架) 使用 React 语法使用尽量简单的框架功能去实现页面, 小程序段能自己独立跑起来
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+H5 端使用 Next.js (SSR 框架), 公用 Taro 的小程序页面代码, 不支持的 Taro 接口比如 View、Text、Taro.pxTransform 等之类的组件或接口, 使用 jsconfig.json 去映射到 H5 端文件夹, 自己封装能支持 SSR 的 H5 端组件, 组件导出 API 各端一致
 
-## Learn More
+SEO 需要有 a 标签, 这与小程序使用 js 跳转很冲突, 怎么办? 那就约定小程序段跳转封装一个类似 Next.js 跳转的 Link 组件, 实现小程序端渲染成 View, H5 端渲染成 a, 并包裹跳转逻辑; 类似的其他相同方向的组件接口也是这样的约定实现
 
-To learn more about Next.js, take a look at the following resources:
+甚至还能将之前写好的 Taro 开发的多端小程序, 能改动极少代码就可以支持这种模式, 粉碎老板的くそ需求
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 后续会一直开发一直补充文档
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+请勿参考本项目的任何代码, 你可以学习我的思路, 然后判断一下自己具不具备这样的条件去完成这种项目, 有多少坑我都没底
 
-## Deploy on Vercel
+理论上至少你需要会熟练使用一门多端框架, 比如 Taro 或 uniapp
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+你需要写过小程序, 懂的小程序和 H5 之间的差异
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+你需要有 SSR 的经验
+
+你可能要查看多端框架在各端实现的源码, 并且能搬运过来
+
+更需要你有二次封装各个端缺失实现的组件的思路和能力!
+
+喜欢用 vue 的朋友, 理论上相同的思路 uniapp + vue + nuxt 应该也是可以的
+
+## 截图
+
+表明我这个方案已经跑起来了
+
+同时开发图片
+
+<img src="./screenshots/20210310.jpg" alt=""  />
+
+H5 端 SSR 源代码
+
+<img src="./screenshots/20210310-2.png" alt=""  />
+
+## 运行
+
+理论上你可能 fork 本项目在本地跑起来
+
+H5 端
+
+你需要在根目录 yarn 装包, 在根目录 yarn dev, localhost:3000 跑起来了
+
+小程序端
+
+所有小程序代码都在 /weapp 下, 这个目录可以作为单独小程序目录运行
+
+你需要进入 /weapp 目录下 yarn 装包, 还要全局安装 taro, 版本要与当前一致
+
+之后 yarn dev:weapp, 使用小程序开发者工具打开 /dist 运行
