@@ -9,6 +9,7 @@
       "@tarojs/mobx": ["components/@tarojs/mobx"],
       "@/components/c-image": ["components/c-image"],
       "@/components/link": ["components/link"],
+      "@/components/parser-rich-text": ["components/parser-rich-text"],
       "@/constants/images": ["public/images.js"]
     }
   }

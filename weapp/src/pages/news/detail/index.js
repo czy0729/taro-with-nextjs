@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2021-03-16 09:57:45
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-16 16:00:23
+ * @Last Modified time: 2021-03-16 17:04:08
  */
 import React from 'react'
 import { View } from '@tarojs/components'
@@ -10,6 +10,7 @@ import FixedHeader from '@/components/app/fixed-header'
 import { contentStore } from '@/stores'
 import { observer, getQuery } from '@/utils'
 import Info from './info'
+import Content from './content'
 import styles from './index.module.scss'
 
 export async function getServerSideProps({ query }) {
@@ -30,6 +31,25 @@ export default observer(
 
     get $detail() {
       return this.contentStore.getState('detail', this.query)
+    }
+
+    componentDidMount() {
+      const { _loaded } = this.$detail
+      if (!_loaded) {
+        this.fetchDetail()
+      }
+    }
+
+    fetchDetail = async () => {
+      const result = await this.contentStore.fetchDetail(this.query)
+      // if (typeof result === 'object') {
+      //   const { status } = result
+      //   if (status !== 0) {
+      //     return replace('404')
+      //   }
+      // }
+
+      return result
     }
 
     renderHeader() {
@@ -61,12 +81,12 @@ export default observer(
             // isFollow={this.$isFollow}
             // onFollow={this.onFollow}
           />
-          {/* <Content
+          <Content
             detail={body}
             product={product}
             pv={pv}
             time={publish_time}
-          /> */}
+          />
         </View>
       )
     }

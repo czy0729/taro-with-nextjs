@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2021-03-16 15:06:29
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-16 15:53:29
+ * @Last Modified time: 2021-03-16 16:50:28
  */
 import React from 'react'
 import { View } from '@tarojs/components'
@@ -20,7 +20,7 @@ function FixedHeader({
   className = '',
   domain = '',
   logo = '',
-  brand,
+  brand = {},
   leftIcon = 'angle-left',
   onLeftIconClick = back
 }) {

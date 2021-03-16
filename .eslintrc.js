@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-03-13 05:15:36
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 10:50:40
+ * @Last Modified time: 2021-03-16 16:35:23
  */
 module.exports = {
   root: true,
@@ -70,6 +70,7 @@ module.exports = {
     'react/state-in-constructor': 0,
     'react/static-property-placement': 0,
     'react/no-deprecated': 0,
+    'react/jsx-one-expression-per-line': 0,
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y
     'jsx-a11y/click-events-have-key-events': 0,

@@ -1,0 +1,83 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-12-31 19:43:16
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 16:33:16
+ */
+@import '../index';
+
+.parseRichText {
+  margin: $wind;
+  font-size: 30px;
+  line-height: 52px;
+  word-break: break-word;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+
+  & > div,
+  & > p {
+    font-size: 30px;
+    margin: 0 0 32px;
+    padding-left: 0;
+    padding-right: 0;
+    line-height: 52px;
+    color: initial;
+    word-break: break-word;
+
+    :global {
+      p {
+        padding: 0;
+        color: initial;
+        word-break: break-word;
+      }
+    }
+  }
+
+  :global {
+    * {
+      max-width: 100%;
+      -webkit-user-select: text !important;
+      user-select: text !important;
+    }
+    img {
+      display: block;
+      max-width: 100% !important;
+      height: initial !important;
+      margin: 0 auto;
+    }
+    img:not([src]),
+    img:not(.lazy-loaded) {
+      visibility: hidden;
+      position: relative;
+      width: 100% !important;
+      height: 400px !important;
+    }
+    br:not(:first-child) {
+      display: none;
+    }
+    p,
+    span,
+    section {
+      margin-bottom: 32px;
+      font-size: 30px;
+      line-height: 52px;
+    }
+    p,
+    section {
+      min-height: initial !important;
+    }
+    td {
+      font-size: 30px;
+      line-height: 52px;
+
+      p,
+      span,
+      section {
+        margin-bottom: 0;
+      }
+    }
+    video[src='undefined'] {
+      display: none;
+    }
+  }
+}

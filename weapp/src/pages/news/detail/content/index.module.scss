@@ -1,0 +1,32 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-03-02 16:20:08
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 16:33:33
+ */
+@import '../../../index';
+
+.richText {
+  min-height: 320px;
+
+  :global {
+    br {
+      display: none;
+    }
+    section {
+      max-width: 100% !important;
+    }
+    img {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.products {
+  padding: 0 $wind;
+}
+
+.copyright {
+  padding: 20px $wind 40px;
+}
