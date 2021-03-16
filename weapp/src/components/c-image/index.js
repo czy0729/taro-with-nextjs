@@ -20,14 +20,14 @@ const cls = 'c-image'
 
 function CImage({
   className,
-  style,
-  src,
-  mode,
-  width,
-  height,
-  round,
-  radius,
-  onClick
+  style = null,
+  src = '',
+  mode = 'aspectFill', // 占满模式 aspectFill | aspectFit
+  width = screenWidth, // 宽度
+  height = null, // 高度, 不传时使用宽度
+  round = false, // 是否圆形
+  radius = null, // 圆角 xs | sm
+  onClick = Function.prototype // 点击事件
 }) {
   const isAspectFit = mode === 'aspectFit'
   const _style = {
@@ -61,14 +61,4 @@ function CImage({
   )
 }
 
-export default sfc(CImage, {
-  className: '',
-  style: null,
-  src: '', // 路径
-  mode: 'aspectFill', // 占满模式 aspectFill | aspectFit
-  width: screenWidth, // 宽度
-  height: null, // 高度, 不传时使用宽度
-  round: false, // 是否圆形
-  radius: null, // 圆角 xs | sm
-  onClick: Function.prototype // 点击事件
-})
+export default sfc(CImage)

@@ -2,11 +2,12 @@
  * @Author: czy0729
  * @Date: 2021-02-25 10:49:10
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 10:54:46
+ * @Last Modified time: 2021-03-16 15:27:33
  */
 import React from 'react'
 import NextLink from 'next/link'
 import router from 'next/router'
+import { SERVER } from '@/constants'
 
 function Link({ href, replace, children, ...other }) {
   if (typeof href === 'object') {
@@ -34,12 +35,18 @@ function Link({ href, replace, children, ...other }) {
   return <a {...other}>{children}</a>
 }
 
+export default Link
+
 export function push(pathname) {
   return router.push(getPathname(pathname))
 }
 
 export function replace(pathname) {
   return router.replace(getPathname(pathname))
+}
+
+export function back() {
+  return router.back()
 }
 
 function getPathname(pathname) {
@@ -49,4 +56,9 @@ function getPathname(pathname) {
   return `/${pathname}`
 }
 
-export default Link
+/**
+ * 获取页面参数
+ */
+export function getQuery(target) {
+  return SERVER ? target.props.query || {} : router.query
+}

@@ -2,16 +2,16 @@
  * @Author: czy0729
  * @Date: 2021-02-24 16:01:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-10 17:21:29
+ * @Last Modified time: 2021-03-16 11:02:45
  */
 import React from 'react'
 import { View } from '@tarojs/components'
 import HomeHeader from '@/components/app/home-header'
-import { observer } from '@/utils'
 import { contentStore } from '@/stores'
+import { observer } from '@/utils'
 import List from './list'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return contentStore.fetchHomeList({}, true)
 }
 

@@ -2,8 +2,9 @@
  * @Author: czy0729
  * @Date: 2021-02-24 16:35:44
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-02-26 15:12:52
+ * @Last Modified time: 2021-03-16 14:08:00
  */
-export { default as Text } from './text'
-export { default as View } from './view'
-export { default as ScrollView } from './scroll-view'
+export * from './button'
+export * from './scroll-view'
+export * from './text'
+export * from './view'

@@ -2,12 +2,12 @@
  * @Author: czy0729
  * @Date: 2020-03-03 11:30:06
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 13:41:49
+ * @Last Modified time: 2021-03-16 14:35:02
  */
-import { observable, getTimestamp } from '@/utils'
+import { observable, getTimestamp, getQueryKeyString } from '@/utils'
 import fetch from '@/utils/fetch'
 import { LIST_EMPTY, LIST_LIMIT } from '@/constants'
-import { API_CONTENT_FIND } from '@/constants/api'
+import { API_CONTENT_FIND, API_CONTENT_DETAIL } from '@/constants/api'
 import store from './common'
 
 class Store extends store {
@@ -18,14 +18,29 @@ class Store extends store {
       /**
        * 首页数据
        */
-      homeList: LIST_EMPTY
+      homeList: LIST_EMPTY,
+
+      /**
+       * 内容数据
+       */
+      detail: {
+        0: {
+          content: {
+            author_info: {},
+            product: [],
+            tags: []
+          },
+          guess: [],
+          relative: []
+        }
+      }
     })
   )
 
   /**
    * 首页数据
    */
-  fetchHomeList = async (query, refresh) => {
+  fetchHomeList = async (query = {}, refresh) => {
     const key = 'homeList'
     const url = API_CONTENT_FIND
 
@@ -59,6 +74,37 @@ class Store extends store {
     return this.toSSR({
       [key]: this.state[key]
     })
+  }
+
+  /**
+   * 内容详情
+   */
+  fetchDetail = async (query = {}) => {
+    const key = 'detail'
+    const url = API_CONTENT_DETAIL
+
+    const result = await fetch({
+      url,
+      data: query
+    })
+    const { status, data } = result
+    if (status === 0) {
+      this.setState({
+        [key]: {
+          [getQueryKeyString(query)]: {
+            ...data,
+            _loaded: getTimestamp()
+          }
+        }
+      })
+    }
+
+    return this.toSSR(
+      {
+        [key]: this.state[key]
+      },
+      query
+    )
   }
 }
 

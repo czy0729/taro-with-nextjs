@@ -1,0 +1,24 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-07-20 17:40:58
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 15:52:15
+ */
+@import '../../index';
+
+.fixedHeader {
+  position: relative;
+  height: 98px;
+  background-color: $color-plain;
+  @include thinBorder(bottom);
+}
+
+.icon {
+  width: 88px;
+  height: $header;
+  margin-right: auto;
+  line-height: $header;
+  text-align: center;
+  font-size: 34px;
+  color: initial;
+}

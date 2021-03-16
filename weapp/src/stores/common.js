@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-10 11:58:28
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 14:05:57
+ * @Last Modified time: 2021-03-16 14:35:13
  */
 import { configure, extendObservable, computed, action } from 'mobx'
 import { getQueryKeyString, toJS } from '@/utils'
@@ -28,10 +28,11 @@ export default class Store {
   /**
    * 生成约定的能初始化Store的SSR数据
    */
-  toSSR = (data = {}) =>
+  toSSR = (data = {}, query) =>
     toJS({
       props: {
-        [this.namespace]: data
+        [this.namespace]: data,
+        query
       }
     })
 

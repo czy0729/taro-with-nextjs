@@ -1,0 +1,17 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-03-02 16:15:48
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 14:20:46
+ */
+@import '../../../index';
+
+.info {
+  margin: 0 $wind $wind;
+}
+
+.author {
+  padding: 16px;
+  box-shadow: 0px 0px 12px 0px rgba(178, 178, 178, 0.24);
+  border-radius: 6px;
+}

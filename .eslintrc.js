@@ -56,6 +56,7 @@ module.exports = {
     'operator-linebreak': 0,
     'prefer-destructuring': 0,
     'prefer-rest-params': 0,
+    camelcase: 0,
     eqeqeq: 0,
     radix: 0,
     semi: 0,

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2021-02-24 18:24:31
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 10:38:43
+ * @Last Modified time: 2021-03-16 15:28:26
  */
 import Taro from '@tarojs/taro'
 import {
@@ -11,10 +11,10 @@ import {
 } from '@tarojs/mobx'
 import { observable, computed } from 'mobx'
 import classNames from 'classnames'
-import { push, replace } from '@/components/link'
+import { push, replace, back, getQuery } from '@/components/link'
 import { WEAPP, H5, IOS } from '@/constants'
 
-export { observer, computed, observable, push, replace }
+export { observer, computed, observable, push, replace, back, getQuery }
 
 /**
  * classNames引用 (缩短引用)
@@ -91,19 +91,6 @@ export function oss(url = '', w = 480) {
   }
 }
 
-// /**
-//  * observer and inject
-//  * @param {Component} Component
-//  * @param {string} grabStoresFn
-//  */
-// export function connect(Component, grabStoresFn) {
-//   if (grabStoresFn) {
-//     return inject(grabStoresFn)(observer(Component))
-//   }
-
-//   return observer(Component)
-// }
-
 /**
  * stateless function component
  * 无状态组件公用逻辑HOC
@@ -179,7 +166,8 @@ export function getQueryKeyString(query) {
 
   return Object.keys(query)
     .sort((a, b) => a.localeCompare(b))
-    .map(key => `${key}=${query[key]}`)
+    .map(key => (query[key] ? `${key}=${query[key]}` : null))
+    .filter(item => !!item)
     .join()
 }
 

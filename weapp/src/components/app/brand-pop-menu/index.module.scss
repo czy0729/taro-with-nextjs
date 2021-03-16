@@ -1,0 +1,76 @@
+/*
+ * @Author: czy0729
+ * @Date: 2020-04-14 16:45:30
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 15:55:21
+ */
+@import '../../index';
+
+.wrap {
+  position: relative;
+
+  &Active {
+    .mask,
+    .menu {
+      display: block;
+    }
+  }
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  top: 112px;
+  right: 20px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    right: 14px;
+    border-width: 0 10px 10px;
+    border-color: transparent;
+    border-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+  }
+  &Item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 80px;
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      @include thinBorder(bottom);
+    }
+  }
+  &Icon {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    text-align: center;
+  }
+  &Text {
+    flex: 1;
+    padding: 0 48px 0 0;
+    font-size: 28px;
+    white-space: nowrap;
+  }
+}
+
+.mask {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

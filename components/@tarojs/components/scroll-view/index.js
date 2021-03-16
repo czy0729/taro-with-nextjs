@@ -7,7 +7,7 @@
  * @Author: czy0729
  * @Date: 2021-02-24 16:37:29
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-02-27 21:30:14
+ * @Last Modified time: 2021-03-16 14:07:05
  */
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
@@ -24,7 +24,7 @@ function debounce(fn, delay) {
   }
 }
 
-export default class ScrollView extends Component {
+class ScrollView extends Component {
   static defaultProps = {
     scrollX: false,
     scrollY: false,
@@ -113,3 +113,5 @@ export default class ScrollView extends Component {
     )
   }
 }
+
+export { ScrollView }

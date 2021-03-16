@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2021-02-24 17:36:33
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-02-25 17:40:37
+ * @Last Modified time: 2021-03-16 12:00:19
  */
 import React from 'react'
 import { View, Text } from '@tarojs/components'
@@ -33,7 +33,7 @@ const items = [
   }
 ]
 
-function HomeHeader({ className, selected }) {
+function HomeHeader({ className, selected = 0 }) {
   return (
     <View>
       <View className={styles.placeholder} />
@@ -77,7 +77,4 @@ function HomeHeader({ className, selected }) {
   )
 }
 
-export default sfc(HomeHeader, {
-  className: '',
-  selected: 0
-})
+export default sfc(HomeHeader)

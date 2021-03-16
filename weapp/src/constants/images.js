@@ -2,10 +2,11 @@
  * @Author: czy0729
  * @Date: 2021-02-25 16:36:53
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 14:55:28
+ * @Last Modified time: 2021-03-16 15:15:22
  */
 
 // 项目通用
+export const imageLogo = require('../../../public/images/logo.png')
 export const imageEmpty = require('../../../public/images/empty.png')
 export const imageError = require('../../../public/images/error.png')
 export const imageLoading = require('../../../public/images/loading.gif')

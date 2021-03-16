@@ -2,10 +2,11 @@
  * @Author: czy0729
  * @Date: 2021-02-25 16:38:37
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 10:29:00
+ * @Last Modified time: 2021-03-16 15:15:00
  */
 
 // 项目通用
+export const imageLogo = '/images/logo.png'
 export const imageEmpty = '/images/empty.png'
 export const imageError = '/images/error.png'
 export const imageLoading = '/images/loading.gif'

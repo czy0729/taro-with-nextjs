@@ -1,0 +1,193 @@
+/*
+ * @Author: czy0729
+ * @Date: 2021-03-16 13:54:34
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2021-03-16 13:58:01
+ */
+@import '../index';
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 0;
+
+  // -------------------- size --------------------
+  &Mini,
+  &Sm {
+    min-width: 112px;
+    height: 48px;
+  }
+  &Md {
+    height: 72px;
+  }
+  &Lg {
+    height: 80px;
+  }
+  &Xlg {
+    height: 88px;
+  }
+
+  // -------------------- type --------------------
+  &Plain {
+    background: transparent;
+    @include thinBorder(
+      (top, right, bottom, left),
+      rgba(178, 178, 178, 1),
+      40px
+    );
+  }
+  &Default {
+    border-radius: 44px;
+    background: rgba(242, 242, 242, 1);
+  }
+  &Join {
+    background: linear-gradient(
+      128deg,
+      rgba(248, 216, 151, 1) 0%,
+      rgba(254, 186, 69, 1) 100%
+    );
+    border-radius: 44px;
+  }
+  &Warning {
+    background: $color-warning;
+    border-radius: 22px;
+  }
+  &Danger {
+    background: #e6211b;
+    border-radius: 40px;
+  }
+  &GhostPlain {
+    background: transparent;
+    @include thinBorder((top, right, bottom, left), $color-plain, 28px, 3px);
+  }
+  &GhostMain {
+    background: transparent;
+    @include thinBorder((top, right, bottom, left), $color-main, 28px, 3px);
+  }
+  &GhostDanger {
+    background: transparent;
+    @include thinBorder((top, right, bottom, left), $color-danger, 28px, 3px);
+  }
+  &GhostPrimary {
+    background: rgba(62, 108, 204, 0.1);
+    @include thinBorder(
+      (top, right, bottom, left),
+      rgba(62, 108, 204, 1),
+      28px,
+      3px
+    );
+  }
+  &Plain,
+  &Default,
+  &GhostMain {
+    &:after {
+      transform: scale(0.488);
+
+      @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        transform: scale(0.33);
+      }
+    }
+  }
+
+  &Main {
+    background: linear-gradient(270deg, #3da8cc 0%, #3e6ccc 100%);
+  }
+  &Success {
+    background: $color-success;
+  }
+  &Dark {
+    background: linear-gradient(
+      270deg,
+      rgba(129, 129, 129, 1) 0%,
+      rgba(74, 74, 74, 1) 100%
+    );
+  }
+  &Main,
+  &Success,
+  &Dark {
+    &:after {
+      display: none;
+    }
+  }
+
+  // -------------------- other --------------------
+  &Round {
+    border-radius: 100px;
+  }
+  &Shadow {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  }
+
+  // -------------------- text --------------------
+  &Text {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-family;
+    font-size: 30px;
+    font-weight: 400;
+
+    &Mini,
+    &Sm {
+      height: 48px;
+      padding: 0;
+      font-size: 26px;
+      line-height: 48px;
+    }
+    &Medium,
+    &Md {
+      height: 72px;
+      padding: 0;
+      font-size: 26px;
+      line-height: 72px;
+    }
+    &Lg {
+      height: 80px;
+      padding: 0;
+      font-size: 26px;
+      line-height: 80px;
+    }
+    &Xlg {
+      height: 88px;
+      padding: 0;
+      font-size: 32px;
+      line-height: 88px;
+    }
+    &Default {
+      color: $color-desc;
+    }
+    &Plain {
+      color: $color-sub;
+    }
+    &Main,
+    &Success,
+    &Warning,
+    &Danger,
+    &Dark,
+    &GhostPlain {
+      color: $color-plain;
+    }
+    &Join {
+      color: #6a3c10;
+    }
+    &GhostMain {
+      color: $color-main;
+    }
+    &GhostDanger {
+      color: $color-danger;
+    }
+    &GhostPrimary {
+      color: rgba(62, 108, 204, 1);
+    }
+    &Disabled {
+      opacity: 0.4;
+    }
+  }
+}

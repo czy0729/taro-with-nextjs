@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2021-02-25 10:12:05
  * @Last Modified by: czy0729
- * @Last Modified time: 2021-03-01 14:23:34
+ * @Last Modified time: 2021-03-16 15:28:11
  */
 import React from 'react'
 import Taro from '@tarojs/taro'
@@ -96,4 +96,17 @@ export function replace(url, options = {}) {
   return Taro.redirectTo({
     url: `${getPath(url)}?${urlStringify(options)}`
   })
+}
+
+export function back() {
+  return Taro.navigateBack({
+    delta: 1
+  })
+}
+
+/**
+ * 获取页面参数
+ */
+export function getQuery(target) {
+  return target.$router.params
 }
