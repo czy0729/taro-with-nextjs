@@ -14,7 +14,7 @@
 
 下面是几个最核心需要解决的问题
 
-- H5 端使用 Next.js , 公用 Taro 的小程序页面代码, 不支持的比如组件 View、Text, 接口 Taro.pxTransform 等, 使用 jsconfig.json 去映射到 H5 端文件夹, 自己封装能支持 SSR 的 H5 端组件, 组件导出 API 各端一致.
+- H5 端使用 Next.js , 公用 Taro 的小程序页面代码, 不支持的比如组件 View、Text, 接口 Taro.pxTransform 等, 使用 jsconfig.json 去映射到 H5 端文件夹, 自己封装能支持 SSR 的 H5 端组件, 组件导出 API 各端一致. 举个例子, 小程序的 View, 在小程序页面里面以 import { View } from '@tarojs/components' 的形式引入, 在 H5 层不会有 Taro 这个库, 所以在 jsconfig.json 里面新建配置 "@tarojs/components": ["components/@tarojs/components"], 封装一个也叫View的组件, 渲染成div.
 
 - SEO 需要有 a 标签, 这与小程序使用 js 跳转很冲突, 怎么办? 那就约定小程序端跳转封装一个类似 Next.js 跳转的 Link 组件, 实现小程序端渲染成 View, H5 端渲染成 a, 并包裹跳转逻辑; 类似的其他相同方向的组件接口也是这样的约定实现. 归纳起来就是是熟悉 Taro 和 Next.js 之间的异同, 通过互相现成的组件、写法和方案, 去弥补对面的不足, 尽量达成同样的写法实现两侧不同的逻辑.
 
